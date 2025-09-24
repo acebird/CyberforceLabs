@@ -25,3 +25,11 @@ sudo bash -c 'printf "%s\n" "[Unit]" "Description=Run Hello.sh script" "" "[Serv
 
 #Add timer to run the service
 sudo bash -c 'printf "%s\n" "[Unit]" "Description=Run Hello.service every 5 seconds" "" "[Timer]" "OnUnitActiveSec=5s" "AccuracySec=1s" "" "[Install]" "WantedBy=timers.target" > /etc/systemd/system/Hello.timer'
+
+#Enable and Start Hello.service
+sudo systemctl enable Hello.service
+sudo systemctl start Hello.service
+
+#Enable and Start the Timer
+sudo systemctl daemon-reload
+sudo systemctl enable --now Hello.timer
