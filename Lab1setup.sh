@@ -1,6 +1,6 @@
 #Create Users
-sudo useradd -m -p $(openssl passwd -1 'password123') user1
-sudo useradd -m -p $(openssl passwd -1 'password123') user2
+sudo useradd -m -p $(openssl passwd -1 'password1') user1
+sudo useradd -m -p $(openssl passwd -1 'password2') user2
 sudo useradd -m -G sudo -p $(openssl passwd -1 'Sup3rS3cureP@22w0rd') admin1
 
 #Add files to user1's home directory
