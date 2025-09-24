@@ -1,7 +1,3 @@
-#Get attacker IP
-read -p "Enter the attacker box IP:" ip
-
-
 #Create Users
 sudo useradd -m -p $(openssl passwd -1 'password123') user1
 sudo useradd -m -p $(openssl passwd -1 'password123') user2
