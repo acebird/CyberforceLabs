@@ -1,3 +1,4 @@
+#!/bin/bash
 #Create Users
 sudo useradd -m -p $(openssl passwd -1 'password1') user1
 sudo useradd -m -p $(openssl passwd -1 'password2') user2
