@@ -1,3 +1,4 @@
+import re
 import fileinput
 from pathlib import Path
 import socket
@@ -17,7 +18,7 @@ path = Path("/etc/dizquetv/.dizquetv/custom.css")
 
 # Read, replace, and write back
 text = path.read_text()
-text = text.replace("--guide-text : #F0F0f0:", "--guide-text : #b14194:")
+text = re.sub(r"--guide-text\s*:\s*#F0F0f0;", "--guide-text : #b14194:", text, flags=re.IGNORECASE)
 path.write_text(text)
 
 HOST = "0.0.0.0"   # listen on all interfaces
